@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     float moveSpeed = 20f;
-    float rotateSpeed = 4f;
+    float rotateSpeed = 3f;
     Vector3 movement;
     public Image hp;
 
@@ -27,6 +27,11 @@ public class Player : MonoBehaviour
 
         transform.Translate(Vector3.forward * moveSpeed * z * Time.deltaTime);
         transform.Rotate(Vector3.up * rotateSpeed * x);
+
+        if(Input.GetKeyDown(KeyCode.Space) && playerRigidbody.velocity.y <= 0)
+        {
+            playerRigidbody.velocity = Vector3.up * 10;
+        }
 
         MovePoint();
 
